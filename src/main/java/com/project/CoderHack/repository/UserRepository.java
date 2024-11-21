@@ -8,6 +8,4 @@ import com.project.CoderHack.entity.User;
 @Repository
 public interface UserRepository extends MongoRepository<User,String> {
 
-    User findByUsername(String username);
-    void deleteById(String id);
 }
