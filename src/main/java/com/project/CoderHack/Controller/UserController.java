@@ -52,7 +52,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/{userId}")
+    @PutMapping("id/{userId}")
     public ResponseEntity<?> updateUser(@PathVariable String userId, @RequestBody int score) {
         try {
             Optional<User> existingUser = userService.getById(userId);
