@@ -52,21 +52,25 @@ public class UserService {
         if(newScore<0 || newScore>100){
             throw new IllegalArgumentException("Score must be between 0 and 100.");
         }
-        existingUser.setScore(newScore);
-        updatebadges(existingUser);
+        if (existingUser == null) {
+            throw new IllegalArgumentException("User not found.");
+        }
+        int updatedScore=existingUser.getScore()+newScore;
+        if(updatedScore>100){
+            updatedScore=100;
+        }
+        existingUser.setScore(updatedScore);
+        updatebadges(existingUser,newScore);
         return userRepository.save(existingUser);
     }
 
-    public void updatebadges(User user){
-        if(user.getScore()>=1&& user.getScore()<30)
+    public void updatebadges(User user,int currentScore){
+        if(currentScore>=1&& currentScore<30)
             user.getBadges().add("Code Ninja");
-        else if(user.getScore()>=30 && user.getScore()<60)
+        else if(currentScore>=30 && currentScore<60)
             user.getBadges().add("Code Champ");
-        else if(user.getScore()>=60 && user.getScore()<=100)
+        else if(currentScore>=60 && currentScore<=100)
             user.getBadges().add("Code Master");
     }
-
-    
-
 
 }
