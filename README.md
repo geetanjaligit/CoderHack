@@ -1,2 +1,2 @@
-# CoderHack
-A RESTful API service using Spring Boot to manage the Leaderboard for a Coding Platform while using MongoDB to persist the data.
+CoderHack
+CoderHack is a Spring Boot application that gamifies user engagement by assigning scores and badges based on their performance. It leverages a MongoDB database to manage users and their achievements effectively.
